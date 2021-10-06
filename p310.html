@@ -1,0 +1,1555 @@
+<!doctype html>
+<html lang="uk" xmlns:og="http://ogp.me/ns#" class="is_desktop">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>Вийшов Python 3.10. Що нового додали розробники | DOU</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="facebook-domain-verification" content="seketsl6mwpdvzztmp257ob5icoz53">
+
+
+<meta name="description" content="В Python 3.10. додали  match/case, зробили можливим писати мультилайн контекст-менеджери, оптимізували str(), bytes() та bytearray(), представили новий оператор для об’єднання типів та інше. Читайте огляд основних фіч нового релізу Python від Данила Т">
+
+
+
+	
+	<meta property="fb:app_id" content="174858425907105">
+
+	<meta property="og:title" content="Вийшов Python 3.10. Що нового додали розробники">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://dou.ua/forums/topic/34971/">
+	<meta property="og:site_name" content="ДОУ">
+	<meta property="og:image" content="https://s.dou.ua/img/announces/python3.10.jpg">
+
+
+		<meta property="og:description" content="В Python 3.10. додали  match/case, зробили можливим писати мультилайн контекст-менеджери, оптимізували str(), bytes() та bytearray(), представили новий оператор для об’єднання типів та інше. Читайте огляд основних фіч нового релізу Python від Данила Т">
+		<meta name="twitter:description" content="В Python 3.10. додали  match/case, зробили можливим писати мультилайн контекст-менеджери, оптимізували str(), bytes() та bytearray(), представили новий оператор для об’єднання типів та інше. Читайте огляд основних фіч нового релізу Python від Данила Т">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@devua">
+	<meta name="twitter:url" content="https://dou.ua/forums/topic/34971/">
+	<meta name="twitter:title" content="Вийшов Python 3.10. Що нового додали розробники">
+	<meta name="twitter:image" content="https://s.dou.ua/img/announces/python3.10.jpg">
+
+	<link rel="image_src" href="https://s.dou.ua/img/announces/python3.10.jpg">
+
+
+
+	<link rel="icon" sizes="192x192" href="https://s.dou.ua/assets/img/icon.png">
+	<link rel="shortcut icon" sizes="16x16" href="https://s.dou.ua/assets/img/favicon.ico">
+	<link rel="shortcut icon" type="image/png" sizes="32x32" href="https://s.dou.ua/assets/img/favicon32.png">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+		<link rel="alternate" type="application/rss+xml" title="Лента" href="https://dou.ua/feed/">
+
+		<link rel="canonical" href="https://dou.ua/forums/topic/34971/">
+
+		
+	<link type="text/css" rel="stylesheet" href="https://s.dou.ua/build/built.v2438.0f6e51d.css" />
+
+
+
+
+
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
+		ga('create', 'UA-168613-2', 'auto');
+		ga('set', 'transport', 'beacon');
+		ga('set', 'dimension1', 'Visitor');
+		ga('set', 'dimension2', 'uk');
+		ga('set', 'dimension3', '' + (window.devicePixelRatio >= 1.1));
+		ga('require', 'outboundLinkTracker');
+		ga('send', 'pageview');
+	</script>
+	<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+	<script>
+		var impressions = [];
+	</script>
+</head>
+
+<body class="">
+
+	<div class="g-page">
+
+
+		<div id="topError" class="top-msg"></div>
+
+		<style>#topinfo{background: #FF5F21;color:#000;}
+#topinfo a {color:#000}
+#topinfo a:hover {color:#ffffff;}</style>
+
+	<div class="topinfo" id="topinfo">
+		<strong>Have ambitions? <a href="https://dou.ua/goto/top/?id=556&lnk=1">Join Belkins & Folderly now!</a></strong>
+		<a href="#" class="close" id="topinfo-close">✖</a>
+	</div>
+	<script>
+		impressions.push({'topinfo': '556'});
+	</script>
+
+
+
+
+
+<header class="b-head">
+
+	<ul>
+		<li class="logo"><a href="https://dou.ua/"></a></li>
+			<li class="m-hide"><a href="https://dou.ua/">Головна</a></li>
+			<li><a href="https://dou.ua/forums/" class="sel">Форум</a></li>
+			<li><a href="https://dou.ua/lenta/">Стрічка</a></li>
+			<li><a href="https://jobs.dou.ua/salaries/">Зарплати</a></li>
+			<li><a href="https://jobs.dou.ua/">Робота</a></li>
+			<li class="m-last"><a href="https://dou.ua/calendar/">Календар</a></li>
+
+				<!-- <li class="m-hide"><a href="https://dou.ua/goto/youtube"><img src="https://s.dou.ua/storage-files/yt_logo_rgb_dark.png" style="width:80px;position:relative;top:-1px;"></a></li> -->
+
+<li class="m-hide t-hide highlighted"><a href="https://dou.ua/goto/ZGXj" target="_blank">👍👎 Оцініть свою компанію</a></li>
+
+
+
+						<li class="mini-header">
+							<a rel="nofollow" href="https://dou.ua/goto/?id=481&amp;mini" style="background-image:url('//s.dou.ua/mini-headers/419808_EB_2_DOU_banners_UpGrade_410x272px-Upskill.jpg')" target="_blank"></a>
+							<style>
+.b-sub-head-n .wrap{padding-top:28px!important;}
+.b-head li.mini-header a {height:67px;background-size:205px 136px;width:205px;border-radius: 0 0 12px 12px;}
+</style>
+						</li>
+						<script>
+							impressions.push({'mini_header': '481'});
+						</script>
+	</ul>
+
+	<div class="right-part">
+			<form class="search" action="//dou.ua/search/" method="get">
+				<input class="inp" id="txtGlobalSearch" type="text" placeholder="пошук" name="q">
+			</form>
+
+			<a id="login-link" href="javascript:;">Вхід та реєстрація</a>
+	</div>
+</header>
+				<div class="max-header" id="max-header-adv-id">
+					<a rel="nofollow" href="https://dou.ua/goto/?id=722&maxi" target="_blank"><img src="https://s.dou.ua/maxi-headers/m1final.jpg"></a>
+					<div class="close m-hide" id="max-header-close-id">×<span>Закрити</span></div>
+
+					
+				</div>
+
+				<script>
+					impressions.push({'max_header': '722'});
+				</script>
+
+	<div class="l-content m-content">
+			<div class="colgroup">
+				<div class="col col2"></div>
+				<div class="col col70"></div>
+				<div class="col col20px"></div>
+				<div class="col col-auto"></div>
+				<div class="col col20px"></div>
+			</div>
+
+		<div class="l-content-wrap">
+				<div class="cell"></div>
+
+			<div class="cell g-right-shadowed mobtab-maincol">
+	<script>
+		impressions.push({'pageviews-content': 88726});
+	</script>
+
+	<div class="b-post-info">
+				<a href="https://dou.ua/forums/development/" class="topic">Розробка</a> ·
+
+			<span class="date">5 жовтня<span class="m-hide">, 14:26</span></span>
+
+		<span class="pageviews" title="Кількість переглядів">2257</span>
+
+		<div class="author">
+				<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_dsc01101-2.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_dsc01101-2.jpg 1.1x">
+			<div class="name">
+				<a href="https://dou.ua/users/danil-topchiy/" target="_blank">Danil Topchiy</a><span class="m-hide">, <span class="prof">Software engineer в <a class="company" href="https://jobs.dou.ua/companies/lun-ua/" target="_blank"><span class="company-favicon" style="background: url(https://s.dou.ua/img/static/favicons/favicon_A4G2HlO.png) no-repeat;">ЛУН</span></a></span></span>
+
+			</div>
+		</div>
+	</div>
+
+	<article class="b-typo b-typo_post" lang="uk">
+		<h1 >Вийшов Python 3.10. Що нового додали розробники</h1>
+
+
+
+				<p style="padding: 7px 0 23px 0;font-size:15px;"><span style="background: #e6f5fb; display: block; margin: -5px  0 -5px; padding: 5px 10px;"><a href="http://telegram.me/dou_tech" target="_blank"><img src="https://s.dou.ua/assets/img/telegram.svg" style="width: 22px; height: 22px; margin: 0 7px 0 0!important; float: left; position: relative; top: 0px;"></a><em>Підписуйтеся на&nbsp;<a href="http://telegram.me/dou_tech" target="_blank">Telegram-канал «DOU #tech»</a>, щоб не&nbsp;пропустити нові технічні статті.</em></span></p>
+
+
+		<p>Всім привіт, я пишу код на Python в ЛУН та веду подкаст про розробку <a href="https://t.me/test_in_prod" target="_blank">«Потестим в проде»</a>. Вчора вийшов новий реліз Python 3.10, коротко розповім про основні фічі.</p>
+
+<h2>В мову додали match/case</h2>
+
+<p>В рамках <a href="https://www.python.org/dev/peps/pep-0634/" target="_blank"><strong>PEP 634: Structural Pattern Matching</strong></a> в мову додали match/case конструкцію:</p>
+
+<pre>match&nbsp;subject:
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;&lt;pattern_1&gt;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;action_1&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;&lt;pattern_2&gt;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;action_2&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;&lt;pattern_3&gt;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;action_3&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;_:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;action_wildcard&gt;
+</pre>
+
+<p>Працює звично: оператор match приймає вираз і послідовно порівнює його значення з шаблонами. Якщо шаблон не буде знайдений, буде виконаний опціональний останній стейтмент з wildcard <code>_</code>.</p>
+
+<p>Паттерн матчінг може бути використаний у простій формі для звичайного матчу змінної до значення, але справжня цінність матчінгу для Python полягає в обробці форми та типу <code>subject</code>.</p>
+
+<pre>if&nbsp;isinstance(x,&nbsp;tuple)&nbsp;and&nbsp;len(x)&nbsp;==&nbsp;2:
+&nbsp;&nbsp;&nbsp;&nbsp;host,&nbsp;port&nbsp;=&nbsp;x
+&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;=&nbsp;"http"
+elif&nbsp;isinstance(x,&nbsp;tuple)&nbsp;and&nbsp;len(x)&nbsp;==&nbsp;3:
+&nbsp;&nbsp;&nbsp;&nbsp;host,&nbsp;port,&nbsp;mode&nbsp;=&nbsp;x
+#&nbsp;Etc.
+</pre>
+
+<p>Такий код можна буде переписати за допомогою match:</p>
+
+<pre>match&nbsp;x:
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;host,&nbsp;port:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;=&nbsp;"http"
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;host,&nbsp;port,&nbsp;mode:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Etc.
+</pre>
+
+<p>Також можна буде реалізувати паттерн «guard». Якщо умова if не правдива, match перейде на наступний блок. </p>
+
+<pre>match&nbsp;point:
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Point(x,&nbsp;y)&nbsp;if&nbsp;x&nbsp;==&nbsp;y:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"The&nbsp;point&nbsp;is&nbsp;located&nbsp;on&nbsp;the&nbsp;diagonal&nbsp;Y=X&nbsp;at&nbsp;{x}.")
+&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;Point(x,&nbsp;y):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Point&nbsp;is&nbsp;not&nbsp;on&nbsp;the&nbsp;diagonal.")
+</pre>
+
+<p><a href="https://www.python.org/dev/peps/pep-0636/" target="_blank">Ось тут</a> повний туторіал по match/case в Python.</p>
+
+<h2>Мультилайн контекст-менеджери</h2>
+
+<p>Стало можливим писати мультилайн контекст-менеджери, взявши їх в дужки:</p>
+
+<pre>with&nbsp;(
+&nbsp;&nbsp;&nbsp;&nbsp;CtxManager1()&nbsp;as&nbsp;example1,
+&nbsp;&nbsp;&nbsp;&nbsp;CtxManager2()&nbsp;as&nbsp;example2,
+&nbsp;&nbsp;&nbsp;&nbsp;CtxManager3()&nbsp;as&nbsp;example3,
+):
+&nbsp;&nbsp;&nbsp;&nbsp;...
+</pre>
+
+<h2>Оптимізація str(), bytes() та bytearray()</h2>
+
+<p>Конструкції зробили швидше на <nobr>30-40%</nobr> для маленьких об’єктів. Відповідний контріб’юшн <a href="https://bugs.python.org/issue41334" target="_blank">ось тут</a>.</p>
+
+<h2>Новий <a href="https://www.python.org/dev/peps/pep-0604" target="_blank">оператор</a> для об’єднання типів</h2>
+
+<p>Представлено новий оператор для типів, що дозволяє синтаксис <code>X&nbsp;|&nbsp;Y</code>. Це зробить типізацію «Тип X чи тип Y» більш чистою, замість використання <code>typing.Union</code>.</p>
+
+<p>Було:</p>
+
+<pre>def&nbsp;square(number:&nbsp;Union[int,&nbsp;float])&nbsp;-&gt;&nbsp;Union[int,&nbsp;float]:
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;number&nbsp;**&nbsp;2
+</pre>
+
+<p>Стало:</p>
+
+<pre>def&nbsp;square(number:&nbsp;int&nbsp;|&nbsp;float)&nbsp;-&gt;&nbsp;int&nbsp;|&nbsp;float:
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;number&nbsp;**&nbsp;2
+</pre>
+
+<p>Також цей синтаксис можливо використовувати як аргумент isinstance() та issubclass():</p>
+
+<pre>&gt;&gt;&gt;&nbsp;isinstance(1,&nbsp;int&nbsp;|&nbsp;str)
+True
+</pre>
+
+<h2><a href="https://www.python.org/dev/peps/pep-0613" target="_blank">Визначення TypeAlias PEP 613</a></h2>
+
+<p>Тепер модуль typing має спеціальне значення TypeAlias, яке дозволяє більш чітко оголошувати alias для типів.</p>
+
+<p>Було:</p>
+
+<pre>StrCache&nbsp;=&nbsp;'Cache[str]'&nbsp;&nbsp;#&nbsp;a&nbsp;type&nbsp;alias
+LOG_PREFIX&nbsp;=&nbsp;'LOG[DEBUG]'&nbsp;&nbsp;#&nbsp;a&nbsp;module&nbsp;constant
+&nbsp;</pre>
+
+<p>Стало:</p>
+
+<pre>StrCache:&nbsp;TypeAlias&nbsp;=&nbsp;'Cache[str]'&nbsp;&nbsp;#&nbsp;a&nbsp;type&nbsp;alias
+LOG_PREFIX&nbsp;=&nbsp;'LOG[DEBUG]'&nbsp;&nbsp;#&nbsp;a&nbsp;module&nbsp;constant
+</pre>
+
+<p>Також у розробників <a href="https://www.python.org/dev/peps/pep-0647/" target="_blank">з’явилась можливість</a> писати власні TypeGuard для перевірки типів.</p>
+
+<p><strong>Крім цього, покращили та деталізували логи при помилках:</strong></p>
+
+<ul><li>При IndentationError буде надано більше контексту про блок і очікувану кількість відступів.</li><li>В разі AttributeErrors вам буде запропоновані можливі варіанти атрибутів даного об’єкта.</li><li>В разі SyntaxError показується більш повний контекст в багатьох випадках.</li></ul>
+
+<p>Повний список змін шукайте <a href="https://docs.python.org/3.10/whatsnew/3.10.html" target="_blank">тут</a>.</p>
+
+
+			<div class="b-post-tags">
+				<span class="title">Теми:</span> <a href="https://dou.ua/forums/tags/Python/">Python</a>, <a href="https://dou.ua/forums/tags/tech/">tech</a>
+			</div>
+	</article>
+
+
+
+		
+
+		<div class="likely" data-url="https://dou.ua/forums/topic/34971/" data-title="Вийшов Python 3.10. Що нового додали розробники">
+
+
+				<div id="btnLike" class="likely__widget likely__widget_likes "><span class="likely__icon likely__icon_likes" style="opacity: .6;filter: grayscale(0.6);position: relative; left:2.5px;">👍</span><span class="likely__button likely__button_likes"><span class="unchecked_text">Подобається</span><span class="checked_text">Сподобалось</span></span><span class="likely__counter">11</span></div>
+
+				<div id="btnStar" class="likely__widget likely__widget_stars "><span class="likely__icon likely__icon_stars"><svg class="likely__star_empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Shape" d="m15.965661,6.219396l-5.74046,-0.49252l-2.24237,-5.290234l-2.24237,5.290234l-5.740461,0.49252l4.354623,3.7735l-1.305176,5.611125l4.933383,-2.975997l4.933383,2.975997l-1.305177,-5.611125l4.354624,-3.7735l0,0zm-7.982831,4.911043l-3.00394,1.812119l0.795092,-3.417455l-2.652693,-2.297475l3.496484,-0.300136l1.365057,-3.22188l1.365057,3.22188l3.496484,0.300136l-2.651889,2.297475l0.795092,3.417455l-3.004743,-1.812119l0,0z"/></svg><svg class="likely__star_full" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Shape" d="m7.994121,12.627484l4.927092,2.959405l-1.303512,-5.581348l4.349073,-3.753476l-5.733144,-0.489906l-2.23951,-5.262159l-2.239511,5.262159l-5.733142,0.489906l4.349071,3.753476l-1.303512,5.581348l4.927094,-2.959405z"/></svg></span><span class="likely__button likely__button_stars"><span class="unchecked_text">До обраного</span><span class="checked_text">В обраному</span></span><span class="likely__counter">2</span></div>
+
+								<a href="https://t.me/dou_lenta_bot?start=danil-topchiy" class="likely__widget likely__widget_tg"><span class="likely__icon likely__icon_tg"></span><span class="likely__button likely__button_tg">Підписатись на автора</span></a>
+
+
+			<div class="facebook" title="Поділитись посиланням на Фейсбуці">Facebook</div>
+			<div class="twitter" title="Поділитись посиланням в Твіттері" data-via="dou_forum">Twitter</div>
+			<div class="linkedin" title="Поділитись посиланням в LinkedIn">LinkedIn</div>
+
+		</div>
+
+
+
+
+				<div style="padding: 30px 0 0 0;margin-bottom:-10px;">
+					<h4 style="font-size: 18px;margin-bottom: 9px;">Схожі статті</h4>
+					<ul style="font-size:15px;line-height:1.3;">
+							<li style="padding-bottom:10px;"><a style="text-decoration:none;" href="https://dou.ua/lenta/articles/creating-app-for-fullstack-developer-3/?from=similar_posts_tech">Создаем приложение: Docker, VueJs и Python-Sanic. Часть 3</a></li>
+							<li style="padding-bottom:10px;"><a style="text-decoration:none;" href="https://dou.ua/lenta/articles/serverless-python/?from=similar_posts_tech">Безсерверні веб-застосунки на Python з використанням Lambda і Flask</a></li>
+							<li style="padding-bottom:10px;"><a style="text-decoration:none;" href="https://dou.ua/forums/topic/32915/?from=similar_posts_tech">Что такое pre-commit hooks для Git и зачем они нужны</a></li>
+							<li style="padding-bottom:10px;"><a style="text-decoration:none;" href="https://dou.ua/forums/topic/33557/?from=similar_posts_tech">Как djinni переезжал с Python2 на Python3</a></li>
+							<li style="padding-bottom:10px;"><a style="text-decoration:none;" href="https://dou.ua/lenta/articles/interview-questions-python-developer/?from=similar_posts_tech">Співбесіда з Python. 100+ запитань для Junior, Middle, Senior</a></li>
+					</ul>
+				</div>
+
+
+	
+
+
+
+		<a name="comments"></a>
+		<div class="b-comments ">
+				<div id="floatForm" class="hidden-form">
+	<div class="b-comments-form">
+			<img class="g-avatar" src="https://s.dou.ua/assets/img/anon.png" width="40" height="40">
+
+		<div class="textarea-wrap">
+			<textarea class="first"></textarea>
+		</div>
+
+			<div class="list-tags"><em>Дозволені теги: </em>blockquote, a, pre, code, ul, ol, li, b, i, del.</div>
+
+		<div class="send">
+			<div class="b-buttons">
+				<input class="form-button disabled" type="submit" value="Додати коментар">
+					<div class="hint">Ctrl + Enter</div>
+				<div class="little-loading"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+			<div class="comments-head" id="fixedableMenuId">
+				<div class="fixed-menu">
+					<a id="upPageLnkId" title="Наверх" href="javascript:;"></a>
+					<h3 id="lblCommentsCount">9 коментарів</h3>
+
+						<a href="#comments" class="navigation-comment">Додати коментар</a>
+
+					<a id="btnSubsribe" class="comment-subscribe " href="javascript:;"><span class="unchecked-text">Підписатись<span class="m-hide"> на коментарі</span></span><span class="checked-text">Відписатись<span class="m-hide"> від коментарів</span></span></a>
+
+
+				</div>
+				<div class="wrapper"></div>
+			</div>
+
+				<div id="inlineForm"><a name="answer"></a>
+	<div class="b-comments-form">
+			<img class="g-avatar" src="https://s.dou.ua/assets/img/anon.png" width="40" height="40">
+
+		<div class="textarea-wrap">
+			<textarea class="first"></textarea>
+		</div>
+
+			<div class="list-tags"><em>Дозволені теги: </em>blockquote, a, pre, code, ul, ol, li, b, i, del.</div>
+
+		<div class="send">
+			<div class="b-buttons">
+				<input class="form-button disabled" type="submit" value="Додати коментар">
+					<div class="hint">Ctrl + Enter</div>
+				<div class="little-loading"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+			<div id="commentsList">
+				
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-0">
+				<b class="scroll-wrapper" id="2246582"></b>
+
+	<div id="comment_2246582" class="comment g-approved-user">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/viktor.sovietov/" target="_blank">
+	<img class="g-avatar" src="https://s.dou.ua/img/avatars/40x40_1069.png" width="40" height="40"  srcset="https://s.dou.ua/img/avatars/80x80_1069.png 1.1x">
+				Viktor Sovietov
+			</a>
+
+<span class="prof">
+Founder in theplatform.technology and smarter.trading
+				</span>
+			<a class="comment-link" href="#2246582">05.10.2021 22:26</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>пітон вже давно помийка, але тепер він стає гігантською помийкою...</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-1">
+				<b class="scroll-wrapper" id="2246595"></b>
+
+	<div id="comment_2246595" class="comment g-approved-user">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/viacheslav-chimishuk/" target="_blank">
+							<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_291769.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_291769.jpg 1.1x">				Viacheslav Chimishuk
+			</a>
+
+<span class="prof">
+agile bigdata cloud docker kubernetes buzzword engineer, master of blacklists
+				</span>
+			<a class="comment-link" href="#2246595">05.10.2021 22:41</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>У мене теж останнім часом виникає відчуття, що це буде динамічний С++.</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+<a class="parent-link" href="#2246582">Viktor Sovietov</a>		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-2">
+				<b class="scroll-wrapper" id="2246605"></b>
+
+	<div id="comment_2246605" class="comment g-approved-user">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/valentin-nechayev/" target="_blank">
+							<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_38011.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_38011.jpg 1.1x">				Valentin Nechayev
+			</a>
+
+<span class="prof">
+досвідчений чайник Рассела
+				</span>
+			<a class="comment-link" href="#2246605">05.10.2021 22:55</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>Та ну, фіч у рази менше.</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+<a class="parent-link" href="#2246595">Viacheslav Chimishuk</a>		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-3">
+				<b class="scroll-wrapper" id="2246819"></b>
+
+	<div id="comment_2246819" class="comment g-approved-user">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/viacheslav-chimishuk/" target="_blank">
+							<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_291769.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_291769.jpg 1.1x">				Viacheslav Chimishuk
+			</a>
+
+<span class="prof">
+agile bigdata cloud docker kubernetes buzzword engineer, master of blacklists
+				</span>
+			<a class="comment-link" href="#2246819">06.10.2021 12:16</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>У Пітоні?</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+<a class="parent-link" href="#2246605">Valentin Nechayev</a>		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-0">
+				<b class="scroll-wrapper" id="2246349"></b>
+
+	<div id="comment_2246349" class="comment">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/andy-x/" target="_blank">
+	<img class="g-avatar" src="https://s.dou.ua/img/avatars/40x40_80020.jpg" width="40" height="40"  srcset="https://s.dou.ua/img/avatars/80x80_80020.jpg 1.1x">
+				Andy W
+			</a>
+
+
+			<a class="comment-link" href="#2246349">05.10.2021 16:05</a>
+		</div>
+
+		<div class="comment_text b-typo"><blockquote>Мультилайн контекст-менеджери</blockquote>
+
+<p>наскільки я розумію, вся зміна — це те, що їх тепер можна у декілька рядків писати?<br>бо в один рядок ця фіча була доступна ген-ген з версії 2.6 вроді<br></p><pre>with&nbsp;open(in_file)&nbsp;as&nbsp;inp,&nbsp;open(out_file,&nbsp;'w')&nbsp;as&nbsp;outp:</pre></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-1">
+				<b class="scroll-wrapper" id="2246397"></b>
+
+	<div id="comment_2246397" class="comment g-approved-user">
+		<div class="b-post-author dou-official-person">
+			<a class="avatar" href="https://dou.ua/users/danil-topchiy/" target="_blank">
+							<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_dsc01101-2.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_dsc01101-2.jpg 1.1x">				Danil Topchiy
+			</a>
+
+<span class="prof">
+Software engineer
+в <a href="https://jobs.dou.ua/companies/lun-ua/" target="_blank" class="company-favicon" style="background-image: url(https://s.dou.ua/img/static/favicons/favicon_lun.png);">ЛУН</a>
+				</span>
+			<a class="comment-link" href="#2246397">05.10.2021 17:13</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>Саме так, функціонал не розширився.</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+<a class="parent-link" href="#2246349">Andy W</a>		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-0">
+				<b class="scroll-wrapper" id="2246288"></b>
+
+	<div id="comment_2246288" class="comment g-approved-user">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/viacheslav-chimishuk/" target="_blank">
+	<img class="g-avatar" src="https://s.dou.ua/img/avatars/40x40_291769.jpg" width="40" height="40"  srcset="https://s.dou.ua/img/avatars/80x80_291769.jpg 1.1x">
+				Viacheslav Chimishuk
+			</a>
+
+<span class="prof">
+agile bigdata cloud docker kubernetes buzzword engineer, master of blacklists
+				</span>
+			<a class="comment-link" href="#2246288">05.10.2021 14:48</a>
+		</div>
+
+		<div class="comment_text b-typo"><blockquote>«Потестим в проде». </blockquote>
+
+<p>Класна назва. Одне з моїх улюблених занять.</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-1">
+				<b class="scroll-wrapper" id="2246398"></b>
+
+	<div id="comment_2246398" class="comment g-approved-user">
+		<div class="b-post-author dou-official-person">
+			<a class="avatar" href="https://dou.ua/users/danil-topchiy/" target="_blank">
+							<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_dsc01101-2.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_dsc01101-2.jpg 1.1x">				Danil Topchiy
+			</a>
+
+<span class="prof">
+Software engineer
+в <a href="https://jobs.dou.ua/companies/lun-ua/" target="_blank" class="company-favicon" style="background-image: url(https://s.dou.ua/img/static/favicons/favicon_lun.png);">ЛУН</a>
+				</span>
+			<a class="comment-link" href="#2246398">05.10.2021 17:14</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>Дякую! Тільки так і треба))</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+<a class="parent-link" href="#2246288">Viacheslav Chimishuk</a>		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="b-comment level-2">
+				<b class="scroll-wrapper" id="2246775"></b>
+
+	<div id="comment_2246775" class="comment g-approved-user">
+		<div class="b-post-author ">
+			<a class="avatar" href="https://dou.ua/users/vova-kubytskyi/" target="_blank">
+							<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_pavl6433.JPG" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_pavl6433.JPG 1.1x">				Vova Kubytskyi
+			</a>
+
+<span class="prof">
+
+Працює в <a href="https://jobs.dou.ua/companies/lun-ua/" target="_blank" class="company-favicon" style="background-image: url(https://s.dou.ua/img/static/favicons/favicon_lun.png);">ЛУН</a>
+				</span>
+			<a class="comment-link" href="#2246775">06.10.2021 11:25</a>
+		</div>
+
+		<div class="comment_text b-typo"><p>точно)))</p></div>
+
+
+
+		<div class="bottom-line">
+<a class="answer-link" href="javascript:;">Відповісти</a>
+
+<div class="support "><a href="javascript:;">
+						Підтримати
+					</a></div>
+				<div class="b-edit-delete">
+
+				</div>
+
+<a class="parent-link" href="#2246398">Danil Topchiy</a>		</div>
+
+		<div class="sup-users">
+		</div>
+	</div>
+			</div>
+
+			</div>
+			
+		</div>
+
+		<script>
+			window.POST_ID = 88726;
+			window.SUBSCRIBED = false;
+			window.COMMENTS_URL = "https://dou.ua/comment-action/";
+			window.DELETE_ENTRY_URL = "https://dou.ua/comment-delete/";
+			window.CHANGE_URL = "https://dou.ua/comment-gettext/";
+		</script>
+
+
+
+		<div id="subscribeDialog" class="b-comments-dialog">
+		<div class="container">
+			<h4 class="title">Підписатись на коментарі</h4>
+
+			<div class="data table">
+				<div class="row">
+					<div class="cell"><label for="sEmail">Ваша пошта</label></div>
+					<div class="cell"><input id="sEmail" class="first" name="email" type="email" value=""></div>
+				</div>
+			</div>
+			<div class="send">
+				<div class="table">
+					<div class="row">
+						<div class="cell">
+							<div class="b-buttons">
+								<button class="win-button disabled">
+									<span class="out"><span class="button">Підписатись</span></span>
+								</button>
+								<div class="little-loading"></div>
+							</div>
+						</div>
+						<div class="cell right-cell">
+							<div class="cancel">
+								<a href="javascript:;">Не підписуватись</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+			</div>
+
+				<div class="cell"></div>
+				<aside class="cell b-right-side" id="fixedableRightSide">
+		
+
+
+										<div class="b-adv-events">
+			<h4 class="title">Не пропустіть</h4>
+
+				<div class="adv-event-block">
+					<div class="date">
+						8 жовтня, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40363/?from=premiumevents_6575" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/200-Banner_linear_algebra/0a6ee3c25c3fd5ddb0b9a85df9c5fe8b.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/200-Banner_linear_algebra/d6d16b7c4b3fb4bbc5d95702483a5523.png 1.1x">
+								</div>
+
+						Курс Linear Algebra
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						11 — 22 жовтня, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40331/?from=premiumevents_6567" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/1200x400-Salesforce/aa3129346eedb21f434b60e76581e8f2.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/1200x400-Salesforce/08d3f45ff8f4ab7fb5077a0f59651c2a.png 1.1x">
+								</div>
+
+						EPAM Salesforce Hiring Week
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						11 жовтня — 5 листопада, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40392/?from=premiumevents_6579" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/200x120-Mobile/66080d2d66da8314276b1e7fb961c370.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/200x120-Mobile/3c3aa0361481f034ae86ee05b3fcc4bd.png 1.1x">
+								</div>
+
+						EPAM Mobile Hiring Challenge
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						18 — 29 жовтня, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40487/?from=premiumevents_6595" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/image006/88abf6fe80f84885451d219e56bd2218.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/image006/a8ee862feb7999f39009c127aabdbcd1.png 1.1x">
+								</div>
+
+						Java Hiring Sprint | EPAM Anywhere
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						18 жовтня, Київ, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40030/?from=premiumevents_6536" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/Java-min-NEW_q2aUCHX/530507c21fd26676b76ae89beba04423.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/Java-min-NEW_q2aUCHX/82e94829dd171444273550e7bc94f41d.png 1.1x">
+								</div>
+
+						Курс Java Developer в CyberBionic Systematics
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						18 жовтня, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40400/?from=premiumevents_6582" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/Untitled_design_6pgJOig/a192e2a0bc84476bdd4792066488ab2b.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/Untitled_design_6pgJOig/821255bfd1e745e8624498885c6573f3.png 1.1x">
+								</div>
+
+						Як айтішнику вибрати програму для отримання виду на проживання в Канаді. Влад Железняк на DOU Live
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						18 — 22 жовтня, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/39350/?from=premiumevents_6443" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/200x120_F4P_Монтажная_область_1_copy_SBlAzJ6/88a9028a04000e6bd4b35b2dba1637c1.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/200x120_F4P_%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%BD%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C_1_copy_SBlAzJ6/c00b1fc1975e5925244f68b700d00fe9.png 1.1x">
+								</div>
+
+						Extended Fit for Purpose Online
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						19 жовтня, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40238/?from=premiumevents_6594" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/Frame_1_13_1/4e944b6e96518448de6d99fcee2f7e84.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/Frame_1_13_1/41e516986a4eb5e239c409220ba50a14.png 1.1x">
+								</div>
+
+						AWS Tech Conference
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						1 листопада, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/40503/?from=premiumevents_6596" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/DOU_2_zgSVSg1/4ea43ade2c9552fc0372f7e1b6f8f524.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/DOU_2_zgSVSg1/8effa956c66b683b6f5b65af15885a0b.png 1.1x">
+								</div>
+
+						JavaScript Invaders Camp
+					</a>
+				</div>
+				<div class="adv-event-block">
+					<div class="date">
+						19 — 20 листопада, Online					</div>
+
+					<a class="link" href="https://dou.ua/calendar/38514/?from=premiumevents_6484" target="_blank">
+								<div class="img">
+									<img src="https://s.dou.ua/CACHE/images/gstatic/adv_events/bc821c18bd47dc56cd4271e681f3619b_Y0sIo6L/774e8d3cdaa90bc9e815130a50cdbf3a.png" srcset="https://s.dou.ua/CACHE/images/gstatic/adv_events/bc821c18bd47dc56cd4271e681f3619b_Y0sIo6L/0244ad82e64dcc541a66faa76724c257.png 1.1x">
+								</div>
+
+						Devoxx Ukraine 2021
+					</a>
+				</div>
+		</div>
+
+	<script>
+		impressions.push({'adv_events': [6575, 6567, 6579, 6595, 6536, 6582, 6443, 6594, 6596, 6484]});
+	</script>
+
+
+
+
+						<div class="g-clear"></div>
+						<div class="b-sticky-right-side">
+							<div class="l-sticky-wrap">
+								<div class="l-sticky-group">
+									<div class="l-sticky-item">
+														
+        	<div class="b-dou-vacancies">
+
+		<h4 class="title __hot">Гарячі вакансії </h4>
+
+
+			<ul class="vacancies-list">
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/localtrade-crypto-exchange/vacancies/178132/?from=widget_hot">Strong Middle / Senior Front-end Vue.js Engineer</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/localtrade-crypto-exchange/?from=widget_similar"><img src="//s.dou.ua/img/static/favicons/32_7Vy9xml.png">LocalTrade</a>, $2500–3500<span style="color: #787575;">, Київ, Дубай (ОАЕ), віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/dataart/vacancies/181542/?from=widget_hot">Python Developer, Cryptocurrency</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/dataart/?from=widget_hot_beginners"><img src="//s.dou.ua/img/static/favicons/32_0OCVxOP.png">DataArt</a><span style="color: #787575;">, Київ, Харків, Львів, Дніпро, Одеса, Херсон, віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/epam-systems/vacancies/182425/?from=widget_hot">EPAM JavaScript Hiring Week: бонус за приєднання до $4000</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/epam-systems/?from=widget_hot"><img src="//s.dou.ua/img/static/favicons/epam2x.png">EPAM</a><span style="color: #787575;">, Київ, Харків, Львів, Дніпро, Одеса, Вінниця, Івано-Франківськ, Херсон, Миколаїв, Луцьк, Рівне, Тернопіль, Ужгород, Чернівці, віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/inscale/vacancies/179370/?from=widget_hot">Mid-Senior Full Stack Engineer (Salary up to 5.8K USD net)</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/inscale/?from=widget_hot"><img src="//s.dou.ua/img/static/favicons/32_UhUya6R.png">INSCALE</a><span style="color: #787575;">, Київ</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/eurospektras/vacancies/182560/?from=widget_hot">Middle/Senior Android Developer</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/eurospektras/?from=widget_hot"><img src="//s.dou.ua/img/static/favicons/f32_viRUGGq.png">Eurospektras</a>, $1800–3500<span style="color: #787575;">, віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/itransition/vacancies/135072/?from=widget_hot">Front-End Middle Developer</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/itransition/?from=widget_hot"><img src="//s.dou.ua/img/static/favicons/32_V9HcR0C.png">Itransition</a><span style="color: #787575;">, Київ, Харків, віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/unstoppable-domains/vacancies/175892/?from=widget_hot">Technical Recruiter</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/unstoppable-domains/?from=widget_hot"><img src="//s.dou.ua/img/static/favicons/u32_kPQyAn4.png">Unstoppable Domains</a>, $4000–5000<span style="color: #787575;">, Київ, віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/scandiweb/vacancies/174840/?from=widget_hot">Junior Project Leader (Trainee)</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/scandiweb/?from=widget_hot_beginners"><img src="//s.dou.ua/img/static/favicons/32_MfOFM1T.png">Scandiweb</a>, $480–800<span style="color: #787575;">, віддалено</span>				</li>
+
+
+				<li>
+					<a href="https://jobs.dou.ua/companies/pine-software/vacancies/177515/?from=widget_hot">C# (.Net) developer</a> в&nbsp;<a class="company" href="https://jobs.dou.ua/companies/pine-software/?from=widget"><img src="//s.dou.ua/img/static/favicons/32_SV7AqAb.png">Pine Software</a>, до&nbsp;$2500<span style="color: #787575;">, Київ, віддалено</span>				</li>
+	</ul>
+
+
+		<a class="more" href="https://jobs.dou.ua/?from=widget">Всі вакансії</a>
+	</div>
+
+    
+
+									</div>
+								</div>
+
+
+
+																			<div class="l-sticky-group">
+										<h3 style="font-size:27px;font-weight:normal;width:240px;margin:0 auto 14px auto;">Цікаві статті</h3>
+
+											<div class="l-sticky-item">
+												<div class="l-sticky-block">
+													<a class="link" href="https://dou.ua/lenta/articles/testing-newbie-guide-0/?from=hover-news-widget" target="_blank">
+														<img class="img" src="https://s.dou.ua/CACHE/images/img/announces/01sl/c749ec3db2a22d738c6bc70a9f4e39bf.jpg" srcset="https://s.dou.ua/img/announces/01sl.jpg 1.1x" alt="Суровая реальность начинающих тестировщиков. Пособие: что и как учить">
+														<div class="title">Суровая реальность начинающих тестировщиков. Пособие: что и как учить</div>
+													</a>
+												</div>
+											</div>
+											<div class="l-sticky-item">
+												<div class="l-sticky-block">
+													<a class="link" href="https://dou.ua/lenta/interviews/from-military-correspondent-to-engineer/?from=hover-news-widget" target="_blank">
+														<img class="img" src="https://s.dou.ua/CACHE/images/img/announces/420_GgDlrkl/23f6018c142ccb5f981d97496c39d0b9.png" srcset="https://s.dou.ua/img/announces/420_GgDlrkl.png 1.1x" alt="Немає нічого неможливого, або Із військового кореспондента — в NLP Engineer">
+														<div class="title">Немає нічого неможливого, або Із військового кореспондента — в NLP Engineer</div>
+													</a>
+												</div>
+											</div>
+											<div class="l-sticky-item">
+												<div class="l-sticky-block">
+													<a class="link" href="https://dou.ua/lenta/articles/dou-revisor-materialise/?from=hover-news-widget" target="_blank">
+														<img class="img" src="https://s.dou.ua/CACHE/images/img/announces/revisor-materialise-420/ff4de6ebc8eeb2b983823e0478dbb148.jpg" srcset="https://s.dou.ua/img/announces/revisor-materialise-420.jpg 1.1x" alt="DOU Ревізор в Materialise: «Простір, де кожен сантиметр має призначення»">
+														<div class="title">DOU Ревізор в Materialise: «Простір, де кожен сантиметр має призначення»</div>
+													</a>
+												</div>
+											</div>
+											<div class="l-sticky-item">
+												<div class="l-sticky-block">
+													<a class="link" href="https://dou.ua/lenta/articles/optimizing-deploy/?from=hover-news-widget" target="_blank">
+														<img class="img" src="https://s.dou.ua/CACHE/images/img/announces/420_0qLf8Ct/98208f20b481609ffa227f94af3517b6.png" srcset="https://s.dou.ua/img/announces/420_0qLf8Ct.png 1.1x" alt="Как мы оптимизировали деплой и льем код в любое время суток">
+														<div class="title">Как мы оптимизировали деплой и льем код в любое время суток</div>
+													</a>
+												</div>
+											</div>
+									</div>
+
+
+								<div class="l-sticky-group">
+										
+	<div class="b-index-discussions b-block">
+			<div class="title">
+				<h3>Обговорюють зараз</h3>
+			</div>
+
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246865" class="comment">
+						<span class="inner">совка в его упоротости они не помнят — не знают, в лучшем случае видели очереди за маслом и за хлебом. Для них это было детство, для кого счастливое, для кого-то не очень, но все-таки детство.</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/natalia-riabokon/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_100x100avatar42771xgfbbbr.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_100x100avatar42771xgfbbbr.jpg 1.1x">
+							Natalia Riabokon</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246865">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246856" class="comment">
+						<span class="inner">Вроде, и совок уже благополучно сдох... да и автор не совсем дед...</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/yevgen-lesko/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_103989.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_103989.jpg 1.1x">
+							Євген Лесько</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246856">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246838" class="comment">
+						<span class="inner">Легко было представить, как Тимур, прищурившись и немного высунув кончик языка, просматривает самую важную часть статьи — первый абзац с перечислением своих регалий.</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/andrey-mamchenko/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_shahter.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_shahter.jpg 1.1x">
+							atmamont</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246838">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246828" class="comment">
+						<span class="inner">Вроде, и совок уже благополучно сдох, компартия в нашей стране запрещена вовсе, да и автор не совсем дед...</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/natalia-riabokon/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_100x100avatar42771xgfbbbr.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_100x100avatar42771xgfbbbr.jpg 1.1x">
+							Natalia Riabokon</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246828">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246823" class="comment">
+						<span class="inner">Я с ходу могу привести десяток примеров самого простого кода на JavaScript, который вообще не выражается на TypeScript, его на нем невозможно типизировать давай пруф</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/bohdan-vovchuck/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_174668.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_174668.jpg 1.1x">
+							Bohdan Vovchuck</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246823">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246818" class="comment">
+						<span class="inner">Як писав Петро Яцик — «Ще не знав українця, який не намагається навчати інших тому що сам не знає»</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/bohdan-honcharuk/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_420558.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_420558.jpg 1.1x">
+							Bohdan Honcharuk</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246818">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+				<div class="interesting-comment">
+					<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246816" class="comment">
+						<span class="inner">Сначала добейся ©</span>
+					</a>
+					<div class="meta">
+						<a class="userlink" href="https://dou.ua/users/fedorchenko-dmytro/">
+								<img class="g-avatar" src="https://s.dou.ua/img/avatars/25x25_238913.jpg" width="25" height="25"  srcset="https://s.dou.ua/img/avatars/50x50_238913.jpg 1.1x">
+							Dmytro Fedorchenko</a>
+в статті						«<a href="https://dou.ua/lenta/interviews/shemsedinov-about-it/?from=sbcomments#2246816">Преподаватель, разработчик и эксперт в Node.js Тимур Шемсединов: «Нынешние разрабы потеряны для будущего навсегда»</a>»
+					</div>
+				</div>
+	</div>
+
+								</div>
+							</div>
+						</div>
+				</aside>
+				<div class="cell"></div>
+		</div>
+	</div>
+
+	</div>
+
+<footer class="b-footer">
+	<div class="l-content m-db">
+		<div class="l-content-wrap m-db">
+			<div class="col2 m-hide"></div>
+			<div class="col18 m-db">
+				© 2005—2021 <strong><a href="https://dou.ua/">DOU.ua</a></strong>
+				<p class="footer-lang-switch">
+							<strong>Українська</strong>
+·							<a href="?switch_lang=ru" rel="nofollow">Русский</a>
+·							<a href="?switch_lang=en" rel="nofollow">English</a>
+				</p>
+			</div>
+
+			<div class="col2 m-hide"></div>
+
+			<div class="col50 m-cola m-db">
+				<div class="social">
+							<span class="regcount"><a href="https://dou.ua/users/">Нас уже 465 996</a>.</span>
+					Ми в соцмережах:
+					<a href="https://www.facebook.com/devua"><img src="https://s.dou.ua/assets/img/facebook.svg" width="19" height="19"></a>
+					<a href="https://twitter.com/devua"><img src="https://s.dou.ua/assets/img/twitter.svg" width="19" height="19"></a>
+					<a href="https://github.com/devua/csv"><img src="https://s.dou.ua/assets/img/github.svg" width="19" height="19"></a>
+					<a href="https://dou.ua/telegram/"><img src="https://s.dou.ua/assets/img/telegram.svg" width="19" height="19"></a>
+					<a href="https://www.youtube.com/channel/UC6If-LcFxUDJhgL9dmB8oMA"><img src="https://s.dou.ua/assets/img/youtube.svg" style="width:23px;height:23px;top:0;" width="23" height="23"></a>
+				</div>
+
+				<div class="m-hide">
+						<a href="http://djinni.co/developers/?from=dou-footer" target="_blank" rel="noopener">Пошук програмістів на Джині</a>
+				</div>
+			</div>
+
+			<div class="col2 m-hide"></div>
+
+			<div class="col24 m-db m-cola">
+				<ul class="links">
+					<li><a href="https://dou.ua/contacts/">Контакти</a></li>
+					<li><a href="https://dou.ua/adv/">Реклама</a></li>
+					<li><a href="https://dou.ua/legal/">Legal</a></li>
+				</ul>
+
+					Пишіть нам на <a href="mailto:support@dou.ua">support@dou.ua</a>
+			</div>
+
+			<div class="col2 m-hide"></div>
+		</div>
+	</div>
+</footer>
+			<div class="modal-wrap">
+	<div class="modal-screen"></div>
+	<div id="_loginDialog" class="b-login-dialog">
+		<div class="head">
+			<div class="title">Скористайтесь аккаунтом</div>
+			<div class="close cancel">×</div>
+		</div>
+
+		<div class="border">
+			<div class="step1">
+					<ul class="b-login-buttons">
+		<li>
+			<a class='button-link' href="javascript:;" l="/login/google-oauth2/" id="btnGoogle">
+				<div class="login-button btnGoogle">
+					<div class="layer"></div>
+				</div>
+				<div class="link">Google</div>
+			</a>
+		</li>
+		<li>
+			<a class='button-link' href="javascript:;" l="/login/linkedin-oauth2/" id="btnLinkedIn">
+				<div class="login-button btnLin">
+					<div class="layer"></div>
+				</div>
+				<div class="link">LinkedIn</div>
+			</a>
+		</li>
+		<li>
+			<a class='button-link' href="javascript:;" l="/login/github/" id="btnLoginGitHub">
+				<div class="login-button btnLoginGitHub">
+					<div class="layer"></div>
+				</div>
+				<div class="link">GitHub</div>
+			</a>
+		</li>
+		<li>
+			<a class="button-link" href="javascript:;" l="/login/facebook/" id="btnFb">
+				<div class="login-button btnFb">
+					<div class="layer"></div>
+				</div>
+				<div class="link">Facebook</div>
+			</a>
+		</li>
+	</ul>
+
+	<div class="alt-login-method">Увійти <a id='_loginByMail' href="javascript:;">по пошті</a> або <a href="javascript:;" l="/login/twitter/" id="btnTw">твіттеру</a>.
+	</div>
+
+			</div>
+			<div class="step2">
+				<ul class="b-content-menu">
+					<li class="sel" nav='login'>
+						<div class="text wrap">
+							<span>Вхід</span>
+							<b class="l"></b>
+							<b class="c"></b>
+							<b class="r"></b>
+						</div>
+					</li>
+					<li nav="register">
+						<div class="wrap">
+							<a href="javascript:;">Реєстрація</a>
+						</div>
+					</li>
+					<li nav="reset"><div class="wrap"><a href="javascript:;">Відновлення пароля</a></div></li>
+				</ul>
+					<div class="login view">
+		<div class="b-form">
+			<div class="table form-section">
+				<div class="colgroup">
+		<div class="col-130px"></div>
+		<div class="col-auto"></div>
+	</div>
+				<div class="row class">
+		<div class="cell"><label class="input-label" for="">Пошта</label></div>
+		<div class="cell">
+			<div class="input">
+				<input type="text"
+				 name="username"
+				 value=""
+class="first txtEmail"				>
+			</div>
+			
+		</div>
+	</div>
+				<div class="row class">
+					<div class="cell"><label class="input-label">Пароль</label></div>
+					<div class="cell">
+						<div class="input">
+							<input type="password" class="txtPassword" value="" name="password">
+						</div>
+						<div id="wrong-password-message">Неправильний пароль</div>
+					</div>
+				</div>
+			</div>
+			<div class = "table button-section">
+				<div class="colgroup">
+		<div class="col-130px"></div>
+		<div class="col-auto"></div>
+	</div>
+				<div class = "row">
+					<div class = "cell"></div>
+					<div class = "cell">
+						<div class = "little-loading"></div>
+						<button class = "big-button btnSubmit">Увійти</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+					<div style="display:none;" class="register view">
+		<div class="table form-section">
+			<div class="message-closed">Реєстрацію по email закрито</div>
+		</div>
+	</div>
+
+					<div style="display:none;" class="reset view">
+		<div class="b-form">
+
+			<div class="table form-section">
+				<div class="colgroup">
+		<div class="col-130px"></div>
+		<div class="col-auto"></div>
+	</div>
+
+				<div class="row class">
+		<div class="cell"><label class="input-label" for="">Пошта</label></div>
+		<div class="cell">
+			<div class="input">
+				<input type="email"
+				 name="username"
+				 value=""
+class="first txtEmail"				>
+			</div>
+			
+		</div>
+	</div>
+			</div>
+
+			<div class="table button-section">
+				<div class="colgroup">
+		<div class="col-130px"></div>
+		<div class="col-auto"></div>
+	</div>
+				<div class="row">
+					<div class="cell"></div>
+					<div class="cell">
+						<div class="little-loading"></div>
+						<button class="big-button btnSubmit">Скинути пароль</button>
+						<div class="error-msg">
+							<div class="bg"></div>
+							<div class="txt">Ви неправильно вказали свою пошту</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+				<div class="alt-login-method">Або <a id='_loginBySN' href="javascript:;">скористайтесь аккаунтом</a>.</div>
+			</div>
+				<div class="add-email" style="display:none;">
+		<div class="message" style="font-size:14px;margin-left:16px;margin-bottom:15px;">
+			Для того, щоб зробити ваш профіль повноцінним, вкажіть вашу пошту.<br>
+			Ми відправимо вам лист з посиланням для підтвердження.
+		</div>
+		<div class="b-form">
+			<form method="POST">
+				<div class="table form-section">
+					<div class="colgroup">
+		<div class="col-130px"></div>
+		<div class="col-auto"></div>
+	</div>
+
+					<div class="row class">
+		<div class="cell"><label class="input-label" for="">Пошта</label></div>
+		<div class="cell">
+			<div class="input">
+				<input type="email"
+				 name="email"
+				 value=""
+class="first txtEmail"				>
+			</div>
+			
+		</div>
+	</div>
+				</div>
+<input type='hidden' name='csrfmiddlewaretoken' value='qmKIHsYCpihBtZunnLvRzRJ0sRdBA8NvCQX1AHFcEg3PJEUuVIoMWqHYXvdqoWmh' />			</form>
+
+			<div class="table button-section">
+				<div class="colgroup">
+		<div class="col-130px"></div>
+		<div class="col-auto"></div>
+	</div>
+				<div class="row">
+					<div class="cell"></div>
+					<div class="cell b-buttons">
+						<div class="little-loading"></div>
+						<button class="big-button btnSubmit">Зберегти</button>
+						<div class="error-msg">
+							<div class="bg"></div>
+							<div class="txt">Ви неправильно вказали свою пошту</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+			<div class="agreement">
+				<label><input checked type="checkbox" id="agree-checkbox"> я згоден(-на)</label> з <a href="//dou.ua/legal/" target="_blank">умовами використання сайту</a> і <a href="//dou.ua/privacy/" target="_blank">політикою конфіденційності</a>.
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript" src="https://s.dou.ua/build/built.v2350.e4f97d3.js"></script>
+
+		<script type="text/javascript" src="https://s.dou.ua/build/built.v2350.059efce.js"></script>
+
+
+	<script>
+		window.CSRF_TOKEN = "jRgdlYyw2sTMDc3QYnn2AHs7rzCVbYJnvltwedf6hqF0TRtXwkgXXgq5WdCKZMi9";
+		window.LOGIN_URL = "https://dou.ua/ajax-login/";
+		window.RESET_PASSWORD_URL = "https://dou.ua/j-lost-password/";
+		window.USER_ID = 0;
+		window.IS_MOBILE = "False";
+		window.IS_TABLET = "False";
+		window.LANG = "uk";
+
+				window.loginManager = new LoginManager();
+
+				function loginshow() {
+					window.loginManager.showLogin({
+						success: function() {
+							window.location.reload();
+						},
+					});
+					return false;
+				}
+
+				$("#login-link").click(loginshow);
+
+			$("#max-header-close-id").click(function(e) {
+				$.cookie("max-header-722", 1, { expires: 1, path: "/" });
+				$(this).parent().slideUp(200);
+			});
+
+	$("#topinfo-close").click(function(e) {
+		$.cookie("topinfo-556", 1, { expires: 1, path: "/", domain: '.dou.ua' });
+		$("#topinfo").slideUp(150);
+		return false;
+	});
+
+	window.COMMENTS_COUNT = 9;
+	var commentsManager = new CommentsManager();
+	new StarLikeManager();
+
+			new FlowRightSideManager();
+
+
+
+			if (impressions.length) {
+				$.post('/ajax-impressions-track/', {
+					'csrfmiddlewaretoken': window.CSRF_TOKEN,
+					'impressions': JSON.stringify(impressions)
+				});
+			}
+	</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/dart.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/go.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/elixir.min.js"></script>
+<script src="https://s.dou.ua/storage-files/graphql.js"></script>
+<script src="https://s.dou.ua/storage-files/scala.js"></script>
+
+
+<script>
+	if(window.COMMENTS_COUNT <= 1000) {
+		$(document).ready(function() {
+			$('.hl-wrap').each(function(i, block) {
+				$(block).find('pre').addClass(block.className.replace('hl-wrap', ''));
+			});
+
+			$('pre').each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
+		});
+	}
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '2592859804111805');
+	fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=2592859804111805&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+</body>
+</html>
